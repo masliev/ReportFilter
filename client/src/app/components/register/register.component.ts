@@ -13,7 +13,7 @@ export class RegisterComponent {
   onRegister(): void {
     this.auth.register(this.user)
     .then((user) => {
-      console.log(user.json());
+      localStorage.setItem('token', user.json().auth_token);
     })
     .catch((err) => {
       console.log(err);
