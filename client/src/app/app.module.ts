@@ -12,6 +12,7 @@ import { StatusComponent } from './components/status/status.component';
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { LoginRedirect } from './services/login-redirect.service';
 import { LogoutComponent } from './components/logout/logout.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,18 @@ import { LogoutComponent } from './components/logout/logout.component';
     RegisterComponent,
     StatusComponent,
     LogoutComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent,
+        canActivate: [EnsureAuthenticated]
+      },
       {
         path: 'login',
         component: LoginComponent,
