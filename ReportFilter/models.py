@@ -56,6 +56,15 @@ class User(db.Model):
             return 'Invalid token. Please log in again.'
 
 
+class Report(db.Model):
+
+    __tablename__ = "reports"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.Text(), nullable=False)
+
+
 class BlacklistToken(db.Model):
     """
     Token Model for storing JWT tokens
