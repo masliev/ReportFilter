@@ -1,3 +1,5 @@
+import datetime
+
 from flask import Blueprint, request, make_response, jsonify
 from flask.views import MethodView
 
@@ -31,8 +33,8 @@ class RangeAPI(MethodView):
 
         try:
             d_range = DateRange(
-                start=post_data.get('start'),
-                end=post_data.get('end')
+                start=datetime.datetime.fromtimestamp(int(post_data.get('start'))),
+                end=datetime.datetime.fromtimestamp(int(post_data.get('end')))
             )
 
             # insert the range
