@@ -15,6 +15,7 @@ export class RegisterComponent {
     this.auth.register(this.user)
     .then((user) => {
       localStorage.setItem('token', user.json().auth_token);
+      localStorage.setItem('username', this.user['username']);
       this.router.navigateByUrl('');
     })
     .catch((err) => {
