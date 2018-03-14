@@ -70,6 +70,22 @@ class Report(db.Model):
         self.description = description
 
 
+class DateRange(db.Model):
+
+    __tablename__ = "date_ranges"
+    __table_args__ = (
+        db.UniqueConstraint('start', 'end'),
+    )
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    start = db.Column(db.Date)
+    end = db.Column(db.Date)
+
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+
 class BlacklistToken(db.Model):
     """
     Token Model for storing JWT tokens
