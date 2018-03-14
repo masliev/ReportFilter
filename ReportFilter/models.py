@@ -63,6 +63,11 @@ class Report(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text(), nullable=False)
+    posted_date = db.Column(db.Date, default=datetime.datetime.utcnow())
+
+    def __init__(self, title, description):
+        self.title = title
+        self.description = description
 
 
 class BlacklistToken(db.Model):
