@@ -7,12 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
+import { DatepickerService } from './services/datepicker.service';
 import { RegisterComponent } from './components/register/register.component';
 import { StatusComponent } from './components/status/status.component';
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { LoginRedirect } from './services/login-redirect.service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
+import { MyDateRangePickerModule } from 'mydaterangepicker';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { HomeComponent } from './components/home/home.component';
     BrowserModule,
     HttpModule,
     FormsModule,
+    MyDateRangePickerModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -58,7 +61,8 @@ import { HomeComponent } from './components/home/home.component';
   providers: [
     AuthService,
     EnsureAuthenticated,
-    LoginRedirect
+    LoginRedirect,
+    DatepickerService
   ],
   bootstrap: [AppComponent]
 })

@@ -17,6 +17,9 @@
         <h5>Поиск и построение отчетов</h5>
       </div>
       <div class="col-md-6 home-auth">
+        <my-date-range-picker [options]="myDateRangePickerOptions"
+                   (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+
       </div>
     </div>
 </div>
