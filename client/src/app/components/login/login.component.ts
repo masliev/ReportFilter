@@ -10,11 +10,14 @@ import { User } from '../../models/user';
 })
 export class LoginComponent {
   user: User = new User();
+
   constructor(private router: Router, private auth: AuthService) {}
+
   onLogin(): void {
     this.auth.login(this.user)
     .then((user) => {
       localStorage.setItem('token', user.json().auth_token);
+      localStorage.setItem('username', this.user['username']);
       this.router.navigateByUrl('');
     })
     .catch((err) => {
