@@ -12,6 +12,10 @@ export class AuthService {
     let url: string = `${this.BASE_URL}/login`;
     return this.http.post(url, user, {headers: this.headers}).toPromise();
   }
+  logout(): Promise<any> {
+    let url: string = `${this.BASE_URL}/logout`;
+    return this.http.post(url, {headers: this.headers}).toPromise();
+  }
   register(user: User): Promise<any> {
     let url: string = `${this.BASE_URL}/register`;
     return this.http.post(url, user, {headers: this.headers}).toPromise();

@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { StatusComponent } from './components/status/status.component';
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { LoginRedirect } from './services/login-redirect.service';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoginRedirect } from './services/login-redirect.service';
     LoginComponent,
     RegisterComponent,
     StatusComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,11 @@ import { LoginRedirect } from './services/login-redirect.service';
         canActivate: [LoginRedirect]
       },
       {
+        path: 'logout',
+        component: LogoutComponent,
+        canActivate: [EnsureAuthenticated]
+      },
+      {
         path: 'register',
         component: RegisterComponent,
         canActivate: [LoginRedirect]
@@ -37,8 +44,7 @@ import { LoginRedirect } from './services/login-redirect.service';
       {
         path: 'status',
         component: StatusComponent,
-        canActivate:
-        [EnsureAuthenticated]
+        canActivate: [EnsureAuthenticated]
       }
     ])
   ],
